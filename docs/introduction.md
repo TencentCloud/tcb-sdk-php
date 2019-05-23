@@ -7,7 +7,6 @@ TCB提供开发应用所需服务和基础设施。tcb-php-sdk 让你可以在�
 require_once 'tcb-php-sdk/autoload.php'; //相对路径自行调整 
 
 ```php
-// const app = require("tcb-admin-node");
 use TencentCloudBase\TCB;
 $tcb = new TCB([]);
 ```

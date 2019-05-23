@@ -32,10 +32,8 @@ uploadFile(object)
 示例代码
 
 ```php
-// const app = require("tcb-admin-node");
 use TencentCloudBase\TCB;
 $tcb = new Tcb([]);
-// const fs = require("fs");
 $storage = $tcb->getStorage();
 
 

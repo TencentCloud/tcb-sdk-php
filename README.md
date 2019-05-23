@@ -1,4 +1,4 @@
-# Tencent Cloud Base(TCB) Admin php SDK
+# Tencent Cloud Base(TCB) php SDK
 
 
 ## 目录
