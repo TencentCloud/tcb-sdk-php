@@ -1,9 +1,9 @@
 {
-  "name": "tencentcloudbase/tcb-admin-php",
-  "description": "tencent cloud base admin sdk for php",
-  "version": "1.0.0-beta2",
+  "name": "tencentcloudbase/tcb-php-sdk",
+  "description": "tencent cloud base sdk for php",
+  "version": "1.0.0",
   "type": "library",
-  "homepage": "https://github.com/TencentCloudBase/tcb-admin-php",
+  "homepage": "https://github.com/TencentCloudBase/tcb-php-sdk",
   "license": "Apache-2.0",
   "scripts": {
     "test": "phpunit ./tests -c phpunit.xml --filter "
