@@ -2,11 +2,11 @@
 
 ### 准备工作
 
-* 安装cli工具 npm i -g @cloudbase/cli@0.0.7-8，cli工具文档参考https://github.com/TencentCloudBase/cloud-base-cli
-* 下载最新的php-sdk源码包，仓库地址https://github.com/TencentCloudBase/tcb-php-sdk，sdk参考内置readme文档
+* 安装cli工具 npm i -g @cloudbase/cli@0.0.7-8，cli工具文档参考 https://github.com/TencentCloudBase/cloud-base-cli
+* 下载最新的php-sdk源码包，sdk参考内置readme文档, 仓库地址 https://github.com/TencentCloudBase/tcb-php-sdk
   
 ### 编写PHP云函数
-* 示例代码包下载https://share.weiyun.com/58dQW4M，可基于示例代码修改（代码包中有引入tcb-php-sdk，建议使用时下载最新的源码并进行替换）
+* 示例代码包[下载](https://share.weiyun.com/58dQW4M), 可基于示例代码修改（代码包中有引入tcb-php-sdk，建议使用时下载最新的源码并进行替换）
 * 编辑index.php
 ```php
 <?php
