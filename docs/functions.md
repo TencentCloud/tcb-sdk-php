@@ -25,11 +25,11 @@ callFunction(array)
 ```php
 use TencentCloudBase\TCB;
 $tcb = new Tcb([]);
-$functions = $tcb->->getFunctions()
-$result = $functions->callFunction({
+$functions = $tcb->->getFunctions();
+$result = $functions->callFunction([
   'name'=> "test",
   'data'=> [
     'a'=>1
   ]
-});
+]);
 ```
