@@ -10,6 +10,7 @@ use TencentCloudBase\Database\Geo\MultiPolygon;
 use TencentCloudBase\Database\Geo\Point;
 use TencentCloudBase\Database\Geo\Polygon;
 use TencentCloudBase\Utils\TcbException;
+use \DateTime;
 
 class Util
 {
@@ -89,7 +90,16 @@ class Util
           $realVal = self::formatField($value);
           break;
         case Constants::FieldType["ServerDate"]:
-          $realVal = $value['$date']; // 直接返回时间戳？
+          // 将ms时间戳分为s与ms部分
+          $microSecondsTime = $value['$date'] * 1000;
+          $timeSeconds = floor($value['$date'] / 1000);
+          // $microSecondsPart = $microSecondsTime - $timeSeconds * 1000000;
+          // 取us字符串后6位即可
+
+          $microSecondsStr = strval($microSecondsTime);
+          $microSecondsPart = substr($microSecondsStr, -6);
+          // $realVal = $value['$date']; // 直接返回时间戳？
+          $realVal = new DateTime(date('Y-m-d H:i:s.' . $microSecondsPart, $timeSeconds));
           break;
         default:
           $realVal = $value;

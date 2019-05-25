@@ -51,8 +51,14 @@ class Format
       } else if (self::checkSpecialClass($data) === 'serverDate') {
         return $data->parse();
       } else if (self::checkSpecialClass($data) === 'DateTime') {
+        // 获取datetime ms
+        $timeMicroSeconds = $data->format('u');
+        // $timeMillSeconds = floor($timeMicroSeconds / 1000);
+
+        $timeSeconds = $data->getTimestamp();
+        $realTime = floor(($timeSeconds * 1000000 + $timeMicroSeconds) / 1000);
         return  [
-          '$date' => $data->getTimestamp() * 1000
+          '$date' => $realTime
         ];
       }
       return $data;

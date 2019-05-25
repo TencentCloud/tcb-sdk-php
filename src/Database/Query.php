@@ -108,17 +108,17 @@ class Query
     }
 
     // 处理查询条件
-    if (isset($this->_queryOptions["offset"])) {
+    if (isset($this->_queryOptions["offset"]) && $this->_queryOptions["offset"]) {
       $params["offset"] = $this->_queryOptions["offset"];
     }
 
-    if (isset($this->_queryOptions["limit"])) {
+    if (isset($this->_queryOptions["limit"]) && $this->_queryOptions["limit"]) {
       $params["limit"] = $this->_queryOptions["limit"] < 100 ? $this->_queryOptions["limit"] : 100;
     } else {
       $params["limit"] = 100;
     }
 
-    if (isset($this->_queryOptions["projection"])) {
+    if (isset($this->_queryOptions["projection"]) && $this->_queryOptions["projection"]) {
       $params["projection"] = $this->_queryOptions["projection"];
     }
 
@@ -126,7 +126,7 @@ class Query
 
     $res = $this->_request->sendMidData('database.queryDocument', $params);
 
-    if (isset($res["code"])) {
+    if (isset($res["code"]) && $res["code"]) {
       return $res;
     } else {
       $documents = Util::formatResDocumentData($res["data"]["list"]);
@@ -168,7 +168,7 @@ class Query
 
     $res = $this->_request->sendMidData('database.countDocument', $params);
 
-    if (isset($res["code"])) {
+    if (isset($res["code"]) && $res["code"]) {
       return $res;
     } else {
       $result = [
@@ -209,8 +209,8 @@ class Query
     Validate::isFieldOrder($directionStr);
 
     $newOrder = [
-      "field" => $fieldPath,
       "direction" => $directionStr,
+      "field" => $fieldPath
     ];
 
     array_push($this->_fieldOrders, $newOrder);
@@ -299,7 +299,7 @@ class Query
 
     $res = $this->_request->sendMidData('database.updateDocument', $params);
 
-    if (isset($res["code"])) {
+    if (isset($res["code"]) && $res["code"]) {
       return $res;
     } else {
       $result = [
@@ -365,7 +365,7 @@ class Query
 
     $res = $this->_request->sendMidData("database.deleteDocument", $params);
 
-    if (isset($res["code"])) {
+    if (isset($res["code"]) && $res["code"]) {
       return $res;
     } else {
       $result = [

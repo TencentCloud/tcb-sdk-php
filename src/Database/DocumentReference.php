@@ -277,7 +277,7 @@ class DocumentReference
   public function field($projection)
   {
     foreach ($projection as $k => $v) {
-      if (isset($projection[$k])) {
+      if (isset($projection[$k]) && $projection[$k]) {
         $projection[$k] = 1;
       } else {
         $projection[$k] = 0;
