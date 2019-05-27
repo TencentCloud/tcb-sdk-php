@@ -140,7 +140,7 @@ class TcbBase
       'Method' => $method,
       'pathname' => $pathname,
       'Query' => $params,
-      'Headers' => array_merge($args['headers'], array('user-agent' => 'tcb-admin-php/' . $sdk_version))
+      'Headers' => array_merge($args['headers'], array('user-agent' => 'tcb-php-sdk/' . $sdk_version))
     );
 
     $auth = new Auth($authObj);

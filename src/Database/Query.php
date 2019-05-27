@@ -287,15 +287,20 @@ class Query
 
     // $args = [];
     // $args["action"] = "database.updateDocument";
+
     $params = [
       "collectionName" => $this->_coll,
-      "query" => $this->_fieldFilters,
       "multi" => true,
       "merge" => true,
       "upsert" => false,
       "data" => Format::dataFormat($data),
       "interfaceCallSource" => 'BATCH_UPDATE_DOC'
     ];
+
+
+    if ($this->_fieldFilters) {
+      $params["query"] = $this->_fieldFilters;
+    }
 
     $res = $this->_request->sendMidData('database.updateDocument', $params);
 
