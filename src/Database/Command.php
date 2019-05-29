@@ -89,8 +89,26 @@ class Command
     }
 
     $geometry = $isObject ? $val->geometry : $val['geometry'];
-    $maxDistance = $isObject ? $val->maxDistance : $val['maxDistance'];
-    $minDistance = $isObject ? $val->minDistance : $val['minDistance'];
+
+    $resultGeometry = [
+      'geometry' => $geometry->toJSON()
+    ];
+
+    $hasMaxDistance = $isObject ? isset($val->maxDistance) : isset($val['maxDistance']);
+    $hasMinDistance = $isObject ? isset($val->minDistance) : isset($val['minDistance']);
+
+    if ($hasMaxDistance) {
+      $maxDistance = $isObject ? $val->maxDistance : $val['maxDistance'];
+      $resultGeometry['maxDistance'] = $maxDistance;
+    }
+
+    if ($hasMinDistance) {
+      $minDistance = $isObject ? $val->minDistance : $val['minDistance'];
+      $resultGeometry['minDistance'] = $minDistance;
+    }
+
+    // $maxDistance = $isObject ? $val->maxDistance : $val['maxDistance'];
+    // $minDistance = $isObject ? $val->minDistance : $val['minDistance'];
 
     if (!($geometry instanceof Point)) {
       throw new TcbException(
@@ -98,22 +116,22 @@ class Command
         '"geometry" must be of type Point. Received type ' . gettype($geometry)
       );
     }
-    if ((isset($maxDistance) && !is_numeric($maxDistance))) {
+    if (($hasMaxDistance && !is_numeric($maxDistance))) {
       throw new TypeError(
         '"maxDistance" must be of type Number. Received type"' . gettype($maxDistance)
       );
     }
-    if ((isset($minDistance) && !is_numeric($minDistance))) {
+    if (($hasMinDistance && !is_numeric($minDistance))) {
       throw new TypeError(
         '"minDistance" must be of type Number. Received type' . gettype($minDistance)
       );
     }
 
-    $resultGeometry = [
-      'geometry' => $geometry->toJSON(),
-      'maxDistance' => $maxDistance,
-      'minDistance' => $minDistance
-    ];
+    // $resultGeometry = [
+    //   'geometry' => $geometry->toJSON(),
+    //   'maxDistance' => $maxDistance,
+    //   'minDistance' => $minDistance
+    // ];
 
     return new QueryCommand([], ['$geoNear', $resultGeometry]);
   }
