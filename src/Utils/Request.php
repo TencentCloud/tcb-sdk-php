@@ -46,16 +46,12 @@ class Request extends TcbBase
   public function sendMidData($api, $data)
   {
     $params = array_merge($data, array('action' => $api));
-    $composerJson = json_decode(file_get_contents(realpath(__DIR__ . '/../../composer.json')), true);
-
-    $databaseVersion = $composerJson['extra']['databaseVersion'];
-
     $args = array();
 
     $args['params'] = $params;
     $args['method'] = 'post';
     $args['headers'] = array('content-type' => 'application/json');
-    $args['config'] = array_merge($this->config, array('databaseMidTran' => true, 'databaseVersion' => $databaseVersion));
+    $args['config'] = array_merge($this->config, array('databaseMidTran' => true));
 
     $result = $this->cloudApiRequest($args);
     // 

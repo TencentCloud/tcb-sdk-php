@@ -99,6 +99,7 @@ class TcbBase
     $defaultTimeout = 15;
     $composerJson = json_decode(file_get_contents(realpath(__DIR__ . '/../../composer.json')), true);
     $sdk_version = $composerJson['version'];
+    $dataVersion = $composerJson['extra']['dataVersion'];
 
 
     $paramsAdd = array('timestamp' => self::getMilTimeseconds(), 'eventId' => self::getEventId());
@@ -185,9 +186,10 @@ class TcbBase
 
     // database??? ?config.transMidData ?true
     $service = explode('.', $params['action'])[0];
+
+    $params['dataVersion'] = $dataVersion;
     if ($service === 'database' && isset($config['databaseMidTran']) && $config['databaseMidTran'] === true) {
       $params['databaseMidTran'] = true;
-      $params['databaseVersion'] = $config['databaseVersion'];
     }
 
     $opts = array();

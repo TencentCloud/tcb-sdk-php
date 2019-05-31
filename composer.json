@@ -29,6 +29,6 @@
     }
   },
   "extra": {
-    "databaseVersion": "v1"
+    "dataVersion": "2019-06-01"
   }
 }
