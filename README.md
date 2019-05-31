@@ -20,4 +20,4 @@ require_once 'tcb-php-sdk/autoload.php'; //相对路径自行调整
 * [存储](docs/storage.md)
 * [数据库](docs/database.md)
 * [云函数](docs/functions.md)
-* [如何结合sdk编写php云函数](docs/tutorial.md)
+
