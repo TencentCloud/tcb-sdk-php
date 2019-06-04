@@ -168,7 +168,7 @@ class TcbBase
     $url = $protocol . "://tcb-admin.tencentcloudapi.com" . $pathname;
 
     // $url = "http://localhost:8002/admin";
-    $url = "http://118.126.68.63/admin";
+    // $url = "http://118.126.68.63/admin";
 
 
     if (getenv('TENCENTCLOUD_RUNENV') === "SCF") {
