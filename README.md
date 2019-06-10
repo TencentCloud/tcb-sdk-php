@@ -12,8 +12,8 @@ TCB提供开发应用所需服务和基础设施。tcb-php-sdk 让你可以在�
 
 需要php7及以上版本。
 
-## 使用方式：通过源码包引入
-require_once 'tcb-php-sdk/autoload.php'; //相对路径自行调整 
+## 安装
+require_once 'tcb-php-sdk/autoload.php'; //使用方式：通过源码包引入 ，相对路径自行调整 
 
 ## 文档
 * [初始化](docs/initialization.md)
