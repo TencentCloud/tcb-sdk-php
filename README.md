@@ -52,7 +52,7 @@ function main_handler($event, $context)
 }
 ```
 ### 3. 云函数部署
-3.1 上传云函数：在当前云函数文件夹根目录下输入 tcb deploy --runtime Php7（未登录需要先tcb login（请正确输入secretID,secretKey），cli工具文档参考<https://github.com/TencentCloudBase/cloud-base-cli)>
+3.1 上传云函数：在当前云函数文件夹根目录下输入 tcb deploy --runtime Php7（未登录需要先tcb login（请正确输入secretID,secretKey），cli工具文档参考https://github.com/TencentCloudBase/cloud-base-cli)
 
 部署成功显示Depoly serverless function xxx success!
 ### 4. 云函数调用
