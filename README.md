@@ -17,6 +17,7 @@ require_once 'tcb-php-sdk/autoload.php'; //使用方式：通过源码包引入 
 php-sdk beta版使用方式
 ### 1. 准备工作
 1.1 安装cli工具 npm i -g @cloudbase/cli@0.0.7-8
+
 1.2 php-sdk 源码包  地址https://github.com/TencentCloudBase/tcb-admin-php
 ### 2. 云函数代码编写
 示例代码zip包下载https://share.weiyun.com/58dQW4M ，基于代码修改即可（代码包中已引入php-sdk文件）
