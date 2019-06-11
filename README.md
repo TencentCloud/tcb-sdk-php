@@ -23,7 +23,7 @@ php-sdk beta版使用方式
 示例代码zip包下载https://share.weiyun.com/58dQW4M ，基于代码修改即可（代码包中已引入php-sdk文件）
 
 [1]index.php内容
-```javascript
+```js
 <?php
 
 function main_handler($event, $context)
@@ -38,7 +38,7 @@ function main_handler($event, $context)
 ```
 
 [2]tcb.json内容
-```javascript
+```js
 {  
 "deploys": [    
     {     
@@ -57,7 +57,7 @@ function main_handler($event, $context)
 部署成功显示Depoly serverless function xxx success!
 ### 4. 云函数调用
 4.1 进入小程序开发者工具，同步云函数列表，可以看到列表中有上传的云函数phpTestFunc，编写云函数调用代码
-```javascript
+```js
 wx.cloud.callFunction({      
       name: 'phpTestFunc',      
       data: {      
