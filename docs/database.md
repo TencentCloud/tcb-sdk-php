@@ -6,10 +6,10 @@
   - [获取数据库的引用](#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%BC%95%E7%94%A8)
   - [新增集合](#%E6%96%B0%E5%A2%9E%E9%9B%86%E5%90%88)
   - [获取集合的引用](#%E8%8E%B7%E5%8F%96%E9%9B%86%E5%90%88%E7%9A%84%E5%BC%95%E7%94%A8)
-    - [集合 Collection](#%E9%9B%86%E5%90%88-collection)
-    - [记录 Record / Document](#%E8%AE%B0%E5%BD%95-record--document)
-    - [查询筛选指令 Query Command](#%E6%9F%A5%E8%AF%A2%E7%AD%9B%E9%80%89%E6%8C%87%E4%BB%A4-query-command)
-    - [字段更新指令 Update Command](#%E5%AD%97%E6%AE%B5%E6%9B%B4%E6%96%B0%E6%8C%87%E4%BB%A4-update-command)
+    - [集合 Collection](#%E9%9B%86%E5%90%88-Collection)
+    - [记录 Record / Document](#%E8%AE%B0%E5%BD%95-Record--Document)
+    - [查询筛选指令 Query Command](#%E6%9F%A5%E8%AF%A2%E7%AD%9B%E9%80%89%E6%8C%87%E4%BB%A4-Query-Command)
+    - [字段更新指令 Update Command](#%E5%AD%97%E6%AE%B5%E6%9B%B4%E6%96%B0%E6%8C%87%E4%BB%A4-Update-Command)
   - [新增文档](#%E6%96%B0%E5%A2%9E%E6%96%87%E6%A1%A3)
   - [查询文档](#%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3)
     - [添加查询条件](#%E6%B7%BB%E5%8A%A0%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6)
@@ -30,7 +30,7 @@
       - [and](#and)
       - [or](#or)
     - [正则表达式查询](#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2)
-      - [\$db->RegExp](#db-regexp)
+      - [\$db->RegExp](#db-RegExp)
   - [删除文档](#%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3)
   - [更新文档](#%E6%9B%B4%E6%96%B0%E6%96%87%E6%A1%A3)
     - [更新指定文档](#%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E6%96%87%E6%A1%A3)
@@ -46,18 +46,18 @@
       - [unshift](#unshift)
       - [shift](#shift)
   - [支持的数据类型](#%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
-  - [GEO 地理位置](#geo-%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE)
-    - [GEO 数据类型](#geo-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
-      - [Point](#point)
-      - [LineString](#linestring)
-      - [Polygon](#polygon)
-      - [MultiPoint](#multipoint)
-      - [MultiLineString](#multilinestring)
-      - [MultiPolygon](#multipolygon)
-    - [GEO 操作符](#geo-%E6%93%8D%E4%BD%9C%E7%AC%A6)
-      - [geoNear](#geonear)
-      - [geoWithin](#geowithin)
-      - [geoIntersects](#geointersects)
+  - [GEO 地理位置](#GEO-%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE)
+    - [GEO 数据类型](#GEO-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
+      - [Point](#Point)
+      - [LineString](#LineString)
+      - [Polygon](#Polygon)
+      - [MultiPoint](#MultiPoint)
+      - [MultiLineString](#MultiLineString)
+      - [MultiPolygon](#MultiPolygon)
+    - [GEO 操作符](#GEO-%E6%93%8D%E4%BD%9C%E7%AC%A6)
+      - [geoNear](#geoNear)
+      - [geoWithin](#geoWithin)
+      - [geoIntersects](#geoIntersects)
 
 <!-- /TOC -->
 
@@ -503,15 +503,16 @@ $db->collection("goods")->where([
 ```php
 $_ = $db->command;
 $db->collection("goods")->where(
-  $_->or(
-    [
-      'type'=> [
-        'memory'=> $_->gt(8)
-      ]
-    ],
-    [
-      'type'=> [
-        'cpu'=> 3.2
+  $_->or([
+      [
+        'type'=> [
+          'memory'=> $_->gt(8)
+        ]
+      ],
+      [
+        'type'=> [
+          'cpu'=> 3.2
+        ]
       ]
     ]
   )
