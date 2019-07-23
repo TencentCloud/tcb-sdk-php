@@ -1,7 +1,7 @@
 {
   "name": "tencentcloudbase/tcb-php-sdk",
   "description": "tencent cloud base sdk for php",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "library",
   "homepage": "https://github.com/TencentCloudBase/tcb-php-sdk",
   "license": "Apache-2.0",
