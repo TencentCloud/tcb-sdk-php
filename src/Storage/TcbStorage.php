@@ -132,7 +132,7 @@ class TcbStorage extends TcbBase
         [
           'code' => $file['code'],
           'fileID' => $file['fileID'],
-          'tempFileURL' => $file['tempFileURL']
+          'tempFileURL' => isset($file['tempFileURL']) ? $file['tempFileURL'] : ""
         ]
       ]);
     }
@@ -187,7 +187,6 @@ class TcbStorage extends TcbBase
 
   public function downloadFile($options = [])
   {
-
     $fileID = $options['fileID'];
     $tempFilePath = array_key_exists('tempFilePath', $options) ?  $options['tempFilePath'] : null;
 
