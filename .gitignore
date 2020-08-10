@@ -1,6 +1,5 @@
 
 .DS_Store
 .vscode
-phpunit.xml
 tests
 vendor

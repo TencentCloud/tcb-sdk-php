@@ -2,13 +2,29 @@
 
 ### 准备工作
 
-- 安装 cli 工具 npm i -g @cloudbase/cli@0.0.7-9，cli 工具文档参考 https://github.com/TencentCloudBase/cloud-base-cli
-- 下载最新的 php-sdk 源码包，sdk 参考内置 readme 文档, 仓库地址 https://github.com/TencentCloudBase/tcb-php-sdk
+- 安装 CLI 工具 CLI 工具[文档参考](https://github.com/TencentCloudBase/cloudbase-framework/blob/master/CLI_GUIDE.md)
 
-### 编写 PHP 云函数
+```bash
+npm i -g @cloudbase/cli
+```
 
-- 示例代码包[下载](https://share.weiyun.com/58dQW4M), 可基于示例代码修改（代码包中有引入 tcb-php-sdk，建议使用时下载最新的源码并进行替换）
-- 编辑 index.php
+- 登录云开发
+
+```bash
+cloudbase login
+```
+
+- 进入当前 php 项目根目录下进行初始化
+
+```bash
+cloudbase init --without-template
+```
+
+- 在 php 项目根目录下创建 functions 文件夹存放云函数，进入 functions 文件夹并新建 phpTest 云函数
+
+![](https://main.qcloudimg.com/raw/fb7d40e8af0842a5abc63e6f29d33c42.png)
+
+- phpTest 云函数中新建并编辑入口文件 index.php 如下
 
 ```php
 <?php
@@ -25,42 +41,70 @@ function main_handler($event, $context)
 }
 ```
 
-- 编辑 tcb.json
+- phpTest 云函数中编辑 composer.json 如下
 
 ```json
 {
-  "deploys": [
-    {
-      "name": "phpTestFunc", // 指定当前云函数的function name
-      "path": "./",
-      "type": "function",
-      "envId": "xxx", // tcb envid
-      "override": true // 是否覆盖同名函数
+  "require": {
+    "tencentcloudbase/tcb-php-sdk": "1.0"
+  }
+}
+```
+
+- 配置
+
+`cloudbase init` 之后会创建云开发的配置文件 `cloudbaserc.json`，可在配置文件的 plugins 里修改和写入插件配置
+
+```json
+{
+  "envId": "xxx", // 替换为开发者自己的envId
+  "framework": {
+    "plugins": {
+      "function": {
+        "use": "@cloudbase/framework-plugin-function",
+        "inputs": {
+          "functionRootPath": "./functions",
+          "functions": [
+            {
+              "name": "phpTest",
+              "timeout": 60,
+              "envVariables": {},
+              "runtime": "Php7",
+              "memorySize": 128,
+              "handler": "index.main_handler"
+            }
+          ]
+        }
+      }
     }
-  ]
+  }
 }
 ```
 
 ### 云函数部署
 
-- 上传云函数：在当前云函数文件夹根目录下输入 tcb deploy --runtime Php7（未登录需要先 tcb login（请正确输入 secretID,secretKey），部署成功显示 Depoly serverless function xxx success!
+php 项目根目录下一键部署
+
+```bash
+cloudbase framework:deploy
+```
 
 ### 云函数调用
 
-- 进入小程序开发者工具，同步云函数列表，可以看到列表中有上传的云函数 phpTestFunc，编写云函数调用代码
+- 进入小程序开发者工具，同步云函数列表，可以看到列表中有上传的云函数 phpTest，编写云函数调用代码
 
 示例代码
 
 ```javascript
 wx.cloud
   .callFunction({
-    name: "phpTestFunc",
-    data: {}
+    name: 'phpTest',
+    data: {},
   })
-  .then(res => {
-    console.log(res);
+  .then((res) => {
+    console.log(res)
   })
-  .catch(err => {
-    console.error(err);
-  });
+  .catch((err) => {
+    console.error(err)
+  })
 ```

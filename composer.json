@@ -6,7 +6,7 @@
   "homepage": "https://github.com/TencentCloudBase/tcb-php-sdk",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "phpunit ./tests -c phpunit.xml --filter "
+    "test": "phpunit ./tests -c ./tests/phpunit.xml "
   },
   "authors": [
     {
