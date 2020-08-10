@@ -4,7 +4,7 @@ TCB 提供开发应用所需服务和基础设施。tcb-php-sdk 让你可以在�
 
 需要 php7 及以上版本。
 
-## 使用方式：composer install
+## 安装：composer install
 
 composer require tcb-php-sdk
 
