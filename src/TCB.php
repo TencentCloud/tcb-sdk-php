@@ -37,7 +37,7 @@ class TCB
     }
 
     if (array_key_exists('isHttp', $options)) {
-      $this->config->isHttp = $options['isHttp']; // -> ???????
+      $this->config['isHttp'] = $options['isHttp']; // -> ???????
     }
 
     if (array_key_exists('env', $options)) {
@@ -58,12 +58,12 @@ class TCB
 
     if (array_key_exists('sessionToken', $options)) {
       if (!empty($options['sessionToken'])) {
-        $this->config->sessionToken = $options['sessionToken'];
+        $this->config['sessionToken'] = $options['sessionToken'];
       } else if ($this->config['secretId'] && $this->config['secretKey']) {
-        $this->config->sessionToken = null;
+        $this->config['sessionToken'] = null;
       } else {
         $envSessionToken = getenv('TENCENTCLOUD_SESSIONTOKEN');
-        $this->config->sessionToken = $envSessionToken ? $envSessionToken : null;
+        $this->config['sessionToken'] = $envSessionToken ? $envSessionToken : null;
       }
     }
   }
