@@ -15,7 +15,7 @@ TCB 提供开发应用所需服务和基础设施。tcb-php-sdk 让你可以在�
 
 ## 安装
 
-composer require tcb-php-sdk
+composer require tencentcloudbase/tcb-php-sdk
 
 > 国内使用时，可切换为国内镜像: composer config -g repo.packagist composer https://packagist.phpcomposer.com
 

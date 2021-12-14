@@ -1,7 +1,7 @@
 {
   "name": "tencentcloudbase/tcb-php-sdk",
   "description": "tencent cloud base sdk for php",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "library",
   "homepage": "https://github.com/TencentCloudBase/tcb-php-sdk",
   "license": "Apache-2.0",
@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "guzzlehttp/guzzle": "^6.3"
+    "guzzlehttp/guzzle": ">=6.3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.4"
